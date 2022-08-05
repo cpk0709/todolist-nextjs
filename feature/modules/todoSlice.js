@@ -4,8 +4,28 @@ const initialState = {
   list: [
     {
       id: 0,
-      todo: "",
-      status: "",
+      todo: "test0",
+      status: false,
+    },
+    {
+      id: 1,
+      todo: "test1",
+      status: false,
+    },
+    {
+      id: 2,
+      todo: "test2",
+      status: false,
+    },
+    {
+      id: 3,
+      todo: "test3",
+      status: false,
+    },
+    {
+      id: 4,
+      todo: "test4",
+      status: false,
     },
   ],
 };
@@ -13,8 +33,9 @@ const initialState = {
 export const fetchAddTodo = createAsyncThunk(
   "todo/fetchAddTodo",
   (data, thunkAPI) => {
-    console.log("!@");
-    // thunkAPI.dispatch(addTodo());
+    thunkAPI.dispatch(
+      addTodo({ id: Math.random(), todo: data, status: false })
+    );
   }
 );
 
@@ -23,15 +44,12 @@ export const todoSlice = createSlice({
   initialState,
   reducers: {
     addTodo: (state, action) => {
-      console.log("!");
-      console.log(action);
       const new_todoList = [
         ...state.list,
         {
-          id: action.id,
-          title: action.title,
-          content: action.content,
-          status: action.status,
+          id: action.payload.id,
+          todo: action.payload.todo,
+          status: action.payload.status,
         },
       ];
       return { list: new_todoList };
