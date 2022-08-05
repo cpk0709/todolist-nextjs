@@ -4,8 +4,7 @@ const initialState = {
   list: [
     {
       id: 0,
-      title: "",
-      content: "",
+      todo: "",
       status: "",
     },
   ],
