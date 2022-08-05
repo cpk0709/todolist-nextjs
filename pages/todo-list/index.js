@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAppDispatch } from "../../feature/configureStore";
 import { fetchAddTodo } from "../../feature/modules/todoSlice";
+import Todo from "../../components/Todo";
+import { Box } from "@chakra-ui/react";
 
 const TodoListPage = () => {
   const appDispatch = useAppDispatch();
@@ -12,15 +14,26 @@ const TodoListPage = () => {
   };
 
   const handleAddTodo = () => {
-    appDispatch(fetchAddTodo());
+    if (!todo) return;
+    appDispatch(fetchAddTodo(todo));
+    setTodo("");
   };
 
   return (
     <div>
       <h1>The Todo List Page</h1>
       <hr />
-      <input type="text" placeholder="Todo 입력" onChange={getAddTodoForm} />
-      <button onClick={handleAddTodo}>Add Todo</button>
+      <Box mb="20px">
+        <input
+          type="text"
+          placeholder="Todo 입력"
+          value={todo}
+          onChange={getAddTodoForm}
+        />
+        <button onClick={handleAddTodo}>Add Todo</button>
+      </Box>
+      <hr />
+      <Todo />
     </div>
   );
 };
