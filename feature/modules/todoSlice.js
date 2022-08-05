@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 const initialState = {
   list: [
@@ -29,6 +30,19 @@ const initialState = {
     },
   ],
 };
+
+export const fetchGetTodoList = createAsyncThunk(
+  "todo/fetchGetTodoList",
+  async () => {
+    return axios
+      .get("http://localhost:3001/list")
+      .then((response) => {
+        console.log(response.data);
+        return response.data;
+      })
+      .catch((error) => console.log(error));
+  }
+);
 
 export const fetchAddTodo = createAsyncThunk(
   "todo/fetchAddTodo",
