@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useAppDispatch } from "../feature/configureStore";
 import { fetchGetTodoList } from "../feature/modules/todoSlice";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Todo = () => {
   const appDispatch = useAppDispatch();
@@ -12,7 +13,15 @@ const Todo = () => {
   //   appDispatch(fetchGetTodoList());
   // }, [appDispatch]);
 
-  const { data } = useQuery(["todo"], appDispatch(fetchGetTodoList()));
+  // const { data } = useQuery(["todo"], appDispatch(fetchGetTodoList()));
+  // console.log(data);
+
+  const getTodoListAxios = async () => {
+    const { data } = await axios.get("http://localhost:3001/list");
+    return data;
+  };
+
+  const { data } = useQuery(["todo"], getTodoListAxios);
   console.log(data);
 
   return (
