@@ -10,11 +10,21 @@ const initialState = {
   ],
 };
 
+export const fetchAddTodo = createAsyncThunk(
+  "todo/fetchAddTodo",
+  (data, thunkAPI) => {
+    console.log("!@");
+    // thunkAPI.dispatch(addTodo());
+  }
+);
+
 export const todoSlice = createSlice({
   name: "todo",
   initialState,
   reducers: {
     addTodo: (state, action) => {
+      console.log("!");
+      console.log(action);
       const new_todoList = [
         ...state.list,
         {
