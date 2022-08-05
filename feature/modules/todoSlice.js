@@ -1,14 +1,33 @@
-import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-  todoId: 0,
-  todoTitle: "",
-  todoContent: "",
-  status: "",
+  list: [
+    {
+      id: 0,
+      title: "",
+      content: "",
+      status: "",
+    },
+  ],
 };
 
 export const todoSlice = createSlice({
   name: "todo",
   initialState,
-  reducers: {},
+  reducers: {
+    addTodo: (state, action) => {
+      const new_todoList = [
+        ...state.list,
+        {
+          id: action.id,
+          title: action.title,
+          content: action.content,
+          status: action.status,
+        },
+      ];
+      return { list: new_todoList };
+    },
+  },
 });
+
+export const { addTodo } = todoSlice.actions;
