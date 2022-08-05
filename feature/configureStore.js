@@ -1,10 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { todoSlice } from "./modules/todoSlice";
 import { useDispatch } from "react-redux";
 
+const rootReducer = combineReducers({
+  todo: todoSlice.reducer,
+});
+
 export const store = configureStore({
   reducer: {
-    todo: todoSlice,
+    todo: rootReducer,
   },
 });
 
