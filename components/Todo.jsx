@@ -21,8 +21,9 @@ const Todo = () => {
     return data;
   };
 
-  const { data } = useQuery(["todo"], getTodoListAxios);
+  const { data, isLoading } = useQuery(["todo"], getTodoListAxios);
   console.log(data);
+  console.log(isLoading);
 
   return (
     <div>
