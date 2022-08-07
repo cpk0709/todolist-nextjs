@@ -5,27 +5,8 @@ const initialState = {
   list: [
     {
       id: 0,
-      todo: "test0",
-      status: false,
-    },
-    {
-      id: 1,
-      todo: "test1",
-      status: false,
-    },
-    {
-      id: 2,
-      todo: "test2",
-      status: false,
-    },
-    {
-      id: 3,
-      todo: "test3",
-      status: false,
-    },
-    {
-      id: 4,
-      todo: "test4",
+      title: "testTitle0",
+      content: "testContent0",
       status: false,
     },
   ],
@@ -48,7 +29,12 @@ export const fetchAddTodo = createAsyncThunk(
   "todo/fetchAddTodo",
   (data, thunkAPI) => {
     thunkAPI.dispatch(
-      addTodo({ id: Math.random(), todo: data, status: false })
+      addTodo({
+        id: Math.random(),
+        title: data.title,
+        content: data.content,
+        status: false,
+      })
     );
   }
 );
@@ -62,7 +48,8 @@ export const todoSlice = createSlice({
         ...state.list,
         {
           id: action.payload.id,
-          todo: action.payload.todo,
+          title: action.payload.title,
+          content: action.payload.content,
           status: action.payload.status,
         },
       ];
