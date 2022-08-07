@@ -28,7 +28,13 @@ const Todo = () => {
   return (
     <div>
       {todoList.map((todo) => {
-        return <div key={todo.id}>{todo.todo}</div>;
+        return (
+          <>
+            <div key={todo.title}>{todo.title}</div>
+            <br />
+            <div key={todo.id}>{todo.content}</div>
+          </>
+        );
       })}
     </div>
   );
