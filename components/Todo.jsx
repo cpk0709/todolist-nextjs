@@ -4,6 +4,7 @@ import { useAppDispatch } from "../feature/configureStore";
 import { fetchGetTodoList } from "../feature/modules/todoSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { Box } from "@chakra-ui/react";
 
 const Todo = () => {
   const appDispatch = useAppDispatch();
@@ -28,7 +29,11 @@ const Todo = () => {
       {isLoading && <div>Loading...</div>}
       {data &&
         data.map((todo) => {
-          return <div key={todo.id}>{todo.todo}</div>;
+          return (
+            <Box m="12px" p="35px" bg="lightgrey" key={todo.id}>
+              {todo.todo}
+            </Box>
+          );
         })}
     </div>
   );
