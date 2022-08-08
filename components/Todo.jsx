@@ -7,7 +7,7 @@ import axios from "axios";
 
 const Todo = () => {
   const appDispatch = useAppDispatch();
-  const todoList = useSelector((store) => store.todo.todo.list);
+  // const todoList = useSelector((store) => store.todo.todo.list);
 
   // useEffect(() => {
   //   appDispatch(fetchGetTodoList());
@@ -22,14 +22,14 @@ const Todo = () => {
   };
 
   const { data, isLoading } = useQuery(["todo"], getTodoListAxios);
-  console.log(data);
-  console.log(isLoading);
 
   return (
     <div>
-      {todoList.map((todo) => {
-        return <div key={todo.id}>{todo.todo}</div>;
-      })}
+      {isLoading && <div>Loading...</div>}
+      {data &&
+        data.map((todo) => {
+          return <div key={todo.id}>{todo.todo}</div>;
+        })}
     </div>
   );
 };
