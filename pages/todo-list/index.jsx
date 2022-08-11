@@ -3,6 +3,8 @@ import { useAppDispatch } from "../../feature/configureStore";
 import { fetchAddTodo } from "../../feature/modules/todoSlice";
 import Todo from "../../components/Todo";
 import { Box } from "@chakra-ui/react";
+import axios from "axios";
+import { useMutation } from "@tanstack/react-query";
 
 const TodoListPage = () => {
   const appDispatch = useAppDispatch();
@@ -19,6 +21,26 @@ const TodoListPage = () => {
     setTodo("");
   };
 
+  const addTodoLostAxios = async () => {
+    axios.post("http://localhost:3001/list", {
+      id: Math.random(),
+      todo: todo,
+      status: false,
+    });
+  };
+
+  const addTodo = useMutation((todo) =>
+    axios.post("http://localhost:3001/list", todo)
+  );
+
+  const handleAddTodoAxios = () => {
+    addTodo.mutate({
+      id: Math.random(),
+      todo: todo,
+      status: false,
+    });
+  };
+
   return (
     <div>
       <h1>The Todo List Page</h1>
@@ -30,7 +52,7 @@ const TodoListPage = () => {
           value={todo}
           onChange={getAddTodoForm}
         />
-        <button onClick={handleAddTodo}>Add Todo</button>
+        <button onClick={handleAddTodoAxios}>Add Todo</button>
       </Box>
       <hr />
       <Todo />
