@@ -5,11 +5,14 @@ import Todo from "../../components/Todo";
 import { Box } from "@chakra-ui/react";
 import axios from "axios";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
+import { useMutateAddTodo } from "../../api/todo/todo-hooks";
 
 const TodoListPage = () => {
   const appDispatch = useAppDispatch();
 
   const queryClient = useQueryClient();
+
+  const { mutate: addTodoMutate } = useMutateAddTodo();
 
   const [todo, setTodo] = useState("");
 
@@ -42,7 +45,12 @@ const TodoListPage = () => {
   );
 
   const handleAddTodoAxios = () => {
-    addTodo.mutate({
+    // addTodo.mutate({
+    //   id: Math.random(),
+    //   todo: todo,
+    //   status: false,
+    // });
+    addTodoMutate({
       id: Math.random(),
       todo: todo,
       status: false,
