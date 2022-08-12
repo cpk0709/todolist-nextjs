@@ -1,7 +1,7 @@
 import { instance } from "../config";
 
 export const getTodo = async () => {
-  const { data } = await instance.get("http://localhost:3001/list");
+  const { data } = await instance.get("/list");
   return data;
 };
 
