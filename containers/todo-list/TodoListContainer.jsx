@@ -44,7 +44,7 @@ const TodoListContainer = () => {
         setTodoForm={setTodoForm}
         handleAddTodoFetch={handleAddTodoFetch}
       />
-      <div className={styles.body}>TEST</div>
+      <div className={styles.test}>TEST</div>
     </>
   );
 };
