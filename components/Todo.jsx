@@ -1,6 +1,7 @@
 // import { useAppDispatch } from "../feature/configureStore";
 import { Box, Button, Text } from "@chakra-ui/react";
 import { useQueryTodo } from "../api/todo/todo-hooks";
+import { ColorSchema } from "../utils/color";
 
 const Todo = () => {
   // const appDispatch = useAppDispatch();
@@ -32,7 +33,7 @@ const Todo = () => {
           return (
             <Box m="12px" p="35px" bg="lightgrey" key={todo.id}>
               <Text>{todo.todo}</Text>
-              <Button>완료</Button>
+              <Button bg={ColorSchema.key}>완료</Button>
             </Box>
           );
         })}
