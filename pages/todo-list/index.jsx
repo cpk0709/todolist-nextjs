@@ -18,6 +18,10 @@ const TodoListPage = () => {
       queryClient.invalidateQueries("todo");
       setTodo("");
     },
+    onError: (error) => {
+      console.log(error.message);
+      console.log(error);
+    },
   });
 
   const [todo, setTodo] = useState("");
