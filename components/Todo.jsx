@@ -1,9 +1,9 @@
-import { useAppDispatch } from "../feature/configureStore";
+// import { useAppDispatch } from "../feature/configureStore";
 import { Box } from "@chakra-ui/react";
 import { useQueryTodo } from "../api/todo/todo-hooks";
 
 const Todo = () => {
-  const appDispatch = useAppDispatch();
+  // const appDispatch = useAppDispatch();
   // const todoList = useSelector((store) => store.todo.todo.list);
 
   // useEffect(() => {
