@@ -12,7 +12,12 @@ const TodoListPage = () => {
 
   const queryClient = useQueryClient();
 
-  const { mutate: addTodoMutate } = useMutateAddTodo();
+  const { mutate: addTodoMutate } = useMutateAddTodo({
+    onSuccess: () => {
+      console.log("success!");
+      queryClient.invalidateQueries("todo");
+    },
+  });
 
   const [todo, setTodo] = useState("");
 
