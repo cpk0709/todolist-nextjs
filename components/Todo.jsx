@@ -1,9 +1,4 @@
-import { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "../feature/configureStore";
-import { fetchGetTodoList } from "../feature/modules/todoSlice";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { Box } from "@chakra-ui/react";
 import { useQueryTodo } from "../api/todo/todo-hooks";
 
