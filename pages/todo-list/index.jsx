@@ -60,6 +60,10 @@ const TodoListPage = () => {
     //   todo: todo,
     //   status: false,
     // });
+    if (!todo) {
+      alert("Todo를 입력해주세요");
+      return;
+    }
     addTodoMutate({
       id: Math.random(),
       todo: todo,
