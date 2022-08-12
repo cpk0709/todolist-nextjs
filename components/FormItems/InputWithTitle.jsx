@@ -1,13 +1,19 @@
-import { Flex, Image, Input, Switch, Text } from "@chakra-ui/react";
+import { Flex, Image, Input, Text } from "@chakra-ui/react";
 import { ColorSchema } from "../../utils/color";
-import React from "react";
+import React, { useCallback } from "react";
 
-const InputWithTitle = () => {
+const InputWithTitle = ({ title, value, onChange }) => {
+  const handleChange = useCallback(
+    (event) => {
+      onChange(event.target.value);
+    },
+    [onChange]
+  );
   return (
     <Flex>
-      <Text>Todo</Text>
+      <Text>{title}</Text>
       <Flex>
-        <Input />
+        <Input value={value} onChange={handleChange} />
       </Flex>
     </Flex>
   );
