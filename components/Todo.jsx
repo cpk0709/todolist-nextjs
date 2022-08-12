@@ -5,6 +5,7 @@ import { fetchGetTodoList } from "../feature/modules/todoSlice";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Box } from "@chakra-ui/react";
+import { useQueryTodo } from "../api/todo/todo-hooks";
 
 const Todo = () => {
   const appDispatch = useAppDispatch();
@@ -17,12 +18,16 @@ const Todo = () => {
   // const { data } = useQuery(["todo"], appDispatch(fetchGetTodoList()));
   // console.log(data);
 
-  const getTodoListAxios = async () => {
-    const { data } = await axios.get("http://localhost:3001/list");
-    return data;
-  };
+  ///////
+  // const getTodoListAxios = async () => {
+  //   const { data } = await axios.get("http://localhost:3001/list");
+  //   return data;
+  // };
 
-  const { data, isLoading } = useQuery(["todo"], getTodoListAxios);
+  // const { data, isLoading } = useQuery(["todo"], getTodoListAxios);
+  //////
+
+  const { data, isLoading } = useQueryTodo();
 
   return (
     <div>
