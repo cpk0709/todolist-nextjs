@@ -1,5 +1,5 @@
 // import { useAppDispatch } from "../feature/configureStore";
-import { Box } from "@chakra-ui/react";
+import { Box, Button, Text } from "@chakra-ui/react";
 import { useQueryTodo } from "../api/todo/todo-hooks";
 
 const Todo = () => {
@@ -31,7 +31,8 @@ const Todo = () => {
         data.map((todo) => {
           return (
             <Box m="12px" p="35px" bg="lightgrey" key={todo.id}>
-              {todo.todo}
+              <Text>{todo.todo}</Text>
+              <Button>완료</Button>
             </Box>
           );
         })}
