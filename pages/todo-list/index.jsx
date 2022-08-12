@@ -1,14 +1,14 @@
 import { useState } from "react";
-import { useAppDispatch } from "../../feature/configureStore";
-import { fetchAddTodo } from "../../feature/modules/todoSlice";
+// import { useAppDispatch } from "../../feature/configureStore";
+// import { fetchAddTodo } from "../../feature/modules/todoSlice";
+// import axios from "axios";
+import { useQueryClient } from "@tanstack/react-query";
 import Todo from "../../components/Todo";
 import { Box } from "@chakra-ui/react";
-import axios from "axios";
-import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useMutateAddTodo } from "../../api/todo/todo-hooks";
 
 const TodoListPage = () => {
-  const appDispatch = useAppDispatch();
+  // const appDispatch = useAppDispatch();
 
   const queryClient = useQueryClient();
 
@@ -16,6 +16,7 @@ const TodoListPage = () => {
     onSuccess: () => {
       console.log("success!");
       queryClient.invalidateQueries("todo");
+      setTodo("");
     },
   });
 
@@ -25,11 +26,11 @@ const TodoListPage = () => {
     setTodo(e.target.value);
   };
 
-  const handleAddTodo = () => {
-    if (!todo) return;
-    appDispatch(fetchAddTodo(todo));
-    setTodo("");
-  };
+  // const handleAddTodo = () => {
+  //   if (!todo) return;
+  //   appDispatch(fetchAddTodo(todo));
+  //   setTodo("");
+  // };
 
   // const addTodoLostAxios = async () => {
   //   axios.post("http://localhost:3001/list", {
@@ -39,15 +40,15 @@ const TodoListPage = () => {
   //   });
   // };
 
-  const addTodo = useMutation(
-    (todo) => axios.post("http://localhost:3001/list", todo),
-    {
-      onSuccess: () => {
-        console.log("success!");
-        queryClient.invalidateQueries("todo");
-      },
-    }
-  );
+  // const addTodo = useMutation(
+  //   (todo) => axios.post("http://localhost:3001/list", todo),
+  //   {
+  //     onSuccess: () => {
+  //       console.log("success!");
+  //       queryClient.invalidateQueries("todo");
+  //     },
+  //   }
+  // );
 
   const handleAddTodoAxios = () => {
     // addTodo.mutate({
